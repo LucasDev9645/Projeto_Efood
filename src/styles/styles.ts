@@ -36,7 +36,6 @@ color:${colors.red};
 .container {
   max-width:75rem;
   width: 100%;
-  margin: 0 auto;
+  margin: 2rem auto;
 }
-
 `;

@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { colors } from "../../styles/styles";
 
 export const HeaderContainer = styled.header`
-  margin-top: 2rem;
   background-color: ${colors.white};
   display: flex;
   justify-content: space-around;
