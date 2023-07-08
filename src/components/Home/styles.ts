@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 export const HomeListCard = styled.section`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
 `;
