@@ -2,45 +2,88 @@ import Banner from "../Banner";
 import HomeCard from "./HomeCard";
 import { HomeListCard } from "./styles";
 
-import ImageFood from "../../assets/images/laDolce.png";
+import Food from "../../Models/Food";
+
+import imageFood1 from "../../assets/images/laDolce.png";
+import imageFood2 from "../../assets/images/depositphotos_50523105-stock-photo-pizza-with-tomatoes.jpg";
+import imageFood3 from "../../assets/images/sushi.png";
+
+const foods: Food[] = [
+  {
+    id: 1,
+    image: imageFood2,
+    title: "Pizza Doce",
+    avaliation: "5.0",
+    description:
+      "Peça já o melhor da culinária japonesa no conforto da sua casa! Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis. Entrega rápida, embalagens cuidadosas e qualidade garantida.Experimente o Japão sem sair do lar com nosso delivery!",
+    infos: ["Destaque da Semana", "Brasileira"],
+  },
+
+  {
+    id: 2,
+    image: imageFood1,
+    title: "Macarrão com Molho Doce",
+    avaliation: "4.5",
+    description:
+      "Peça já o melhor da culinária japonesa no conforto da sua casa! Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis. Entrega rápida, embalagens cuidadosas e qualidade garantida.Experimente o Japão sem sair do lar com nosso delivery!",
+    infos: ["Espaguete Especial"],
+  },
+
+  {
+    id: 3,
+    image: imageFood2,
+    title: "Pizza a Moda",
+    avaliation: "4.8",
+    description:
+      "Peça já o melhor da culinária japonesa no conforto da sua casa! Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis. Entrega rápida, embalagens cuidadosas e qualidade garantida.Experimente o Japão sem sair do lar com nosso delivery!",
+    infos: ["Brasileira"],
+  },
+
+  {
+    id: 4,
+    image: imageFood1,
+    title: "Macarrão Alho e Oleo",
+    avaliation: "4.6",
+    description:
+      "Peça já o melhor da culinária japonesa no conforto da sua casa! Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis. Entrega rápida, embalagens cuidadosas e qualidade garantida.Experimente o Japão sem sair do lar com nosso delivery!",
+    infos: ["Espaguete"],
+  },
+
+  {
+    id: 5,
+    image: imageFood3,
+    title: "Sushi Especial",
+    avaliation: "4.1",
+    description:
+      "Peça já o melhor da culinária japonesa no conforto da sua casa! Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis. Entrega rápida, embalagens cuidadosas e qualidade garantida.Experimente o Japão sem sair do lar com nosso delivery!",
+    infos: ["Japonesa"],
+  },
+  {
+    id: 6,
+    image: imageFood2,
+    title: "Pizza Portuguesa",
+    avaliation: "4.9",
+    description:
+      "Peça já o melhor da culinária japonesa no conforto da sua casa! Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis. Entrega rápida, embalagens cuidadosas e qualidade garantida.Experimente o Japão sem sair do lar com nosso delivery!",
+    infos: ["Brasileira"],
+  },
+];
 
 const Home = () => {
   return (
     <div>
       <Banner />
       <HomeListCard className="container">
-        <HomeCard
-          id={1}
-          avaliation="4.1"
-          description="A La Dolce Vita Trattoria leva a autêntica cozinha italiana até você! Desfrute de massas caseiras, pizzas deliciosas e risotos incríveis, tudo no conforto do seu lar. Entrega rápida, pratos bem embalados e sabor inesquecível. Peça já!"
-          title="Macarrão"
-          infos={["Destaque da Semana", "Japonesa"]}
-          image={ImageFood}
-        />
-        <HomeCard
-          id={2}
-          avaliation="4.1"
-          description="A La Dolce Vita Trattoria leva a autêntica cozinha italiana até você! Desfrute de massas caseiras, pizzas deliciosas e risotos incríveis, tudo no conforto do seu lar. Entrega rápida, pratos bem embalados e sabor inesquecível. Peça já!"
-          title="Macarrão"
-          infos={["Italiana"]}
-          image={ImageFood}
-        />
-        <HomeCard
-          id={3}
-          avaliation="4.1"
-          description="A La Dolce Vita Trattoria leva a autêntica cozinha italiana até você! Desfrute de massas caseiras, pizzas deliciosas e risotos incríveis, tudo no conforto do seu lar. Entrega rápida, pratos bem embalados e sabor inesquecível. Peça já!"
-          title="Macarrão"
-          infos={["Japonesa"]}
-          image={ImageFood}
-        />
-        <HomeCard
-          id={4}
-          avaliation="4.1"
-          description="A La Dolce Vita Trattoria leva a autêntica cozinha italiana até você! Desfrute de massas caseiras, pizzas deliciosas e risotos incríveis, tudo no conforto do seu lar. Entrega rápida, pratos bem embalados e sabor inesquecível. Peça já!"
-          title="Macarrão"
-          infos={["Destaque  do dia"]}
-          image={ImageFood}
-        />
+        {foods.map((food) => (
+          <HomeCard
+            key={food.id}
+            avaliation={food.avaliation}
+            description={food.description}
+            title={food.title}
+            infos={food.infos}
+            image={food.image}
+          />
+        ))}
       </HomeListCard>
     </div>
   );

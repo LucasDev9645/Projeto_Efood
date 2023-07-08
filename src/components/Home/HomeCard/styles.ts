@@ -16,6 +16,8 @@ export const HomeCardContainer = styled.div`
 
 export const HomeCardImage = styled.img`
   border-radius: 0.5rem 0.5rem 0 0;
+  width: 100%;
+  height: 13.5rem;
 `;
 
 export const ContainerDescription = styled.div`

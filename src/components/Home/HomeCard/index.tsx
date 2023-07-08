@@ -11,7 +11,7 @@ import {
 import Tag from "../../Tag";
 
 type Props = {
-  id: number;
+  id?: number;
   image: string;
   title: string;
   avaliation: string;
@@ -19,20 +19,13 @@ type Props = {
   infos: string[];
 };
 
-const HomeCard = ({
-  image,
-  title,
-  avaliation,
-  description,
-  infos,
-  id,
-}: Props) => {
+const HomeCard = ({ image, title, avaliation, description, infos }: Props) => {
   return (
     <HomeCardContainer>
       <HomeCardImage src={image} alt={title} />
       <Infos>
         {infos.map((info) => (
-          <Tag size="small" key={id}>
+          <Tag key={title} size="small">
             {info}
           </Tag>
         ))}
