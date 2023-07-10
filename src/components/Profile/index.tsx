@@ -1,7 +1,9 @@
-import { ImageHeaderProfile, ImagePresentationHeader } from "./styles";
+import ProfileCard from "./ProfileCard";
+
 import ImageProfileHeader from "../../assets/images/fundocurto.svg";
 import PresentationImage from "../../assets/images/imagemlimpa.png";
-import ProfileCard from "./ProfileCard";
+
+import { ImageHeaderProfile, ImagePresentationHeader } from "./styles";
 
 const Profile = () => {
   return (

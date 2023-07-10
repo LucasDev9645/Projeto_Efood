@@ -1,23 +1,28 @@
+import { Link } from "react-router-dom";
+
 import Logo from "../../assets/images/logo.svg";
 import Cart from "../../assets/images/cart.svg";
+
 import { HeaderCart, HeaderContainer, HeaderLinks } from "./styles";
 
 const Header = () => {
   return (
     <HeaderContainer className="container">
       <div>
-        <img src={Logo} alt="imagem efood" />
+        <Link to="/">
+          <img src={Logo} alt="imagem efood" />
+        </Link>
       </div>
       <nav>
         <HeaderLinks>
           <li>
-            <a href="#">Home</a>
+            <Link to="/">Home</Link>
           </li>
           <li>
-            <a href="#">Cardápio</a>
+            <Link to="/profile">Cardápio</Link>
           </li>
           <li>
-            <a href="#">Promoções</a>
+            <Link to="/promotions">Promoções</Link>
           </li>
         </HeaderLinks>
       </nav>

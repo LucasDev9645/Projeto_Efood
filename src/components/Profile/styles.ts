@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import { colors } from "../../styles/styles";
 
 export const ImageHeaderProfile = styled.img`
@@ -17,6 +18,7 @@ export const ImagePresentationHeader = styled.div`
   background-size: cover;
   color: ${colors.white};
   position: relative;
+
   h1 {
     position: absolute;
     bottom: 2rem;
