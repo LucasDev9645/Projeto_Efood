@@ -1,3 +1,5 @@
+import Tag from "../../Tag";
+
 import Star from "../../../assets/images/estrela.svg";
 
 import {
@@ -8,7 +10,6 @@ import {
   Infos,
   TitleContainer,
 } from "./styles";
-import Tag from "../../Tag";
 
 type Props = {
   id?: number;
@@ -19,13 +20,13 @@ type Props = {
   infos: string[];
 };
 
-const HomeCard = ({ image, title, avaliation, description, infos }: Props) => {
+const Card = ({ image, title, avaliation, description, infos }: Props) => {
   return (
     <HomeCardContainer>
       <HomeCardImage src={image} alt={title} />
       <Infos>
         {infos.map((info) => (
-          <Tag key={title} size="small">
+          <Tag key={info} size="small">
             {info}
           </Tag>
         ))}
@@ -45,4 +46,4 @@ const HomeCard = ({ image, title, avaliation, description, infos }: Props) => {
   );
 };
 
-export default HomeCard;
+export default Card;

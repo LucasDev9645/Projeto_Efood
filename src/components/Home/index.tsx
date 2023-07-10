@@ -1,6 +1,5 @@
 import Banner from "../Banner";
-import HomeCard from "./HomeCard";
-import { HomeListCard } from "./styles";
+import Card from "./Card";
 
 import Food from "../../Models/Food";
 
@@ -8,15 +7,17 @@ import imageFood1 from "../../assets/images/laDolce.png";
 import imageFood2 from "../../assets/images/depositphotos_50523105-stock-photo-pizza-with-tomatoes.jpg";
 import imageFood3 from "../../assets/images/sushi.png";
 
+import { ListCard } from "./styles";
+
 const foods: Food[] = [
   {
     id: 1,
     image: imageFood2,
-    title: "Pizza Doce",
+    title: "Pizza presunto",
     avaliation: "5.0",
     description:
       "Peça já o melhor da culinária japonesa no conforto da sua casa! Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis. Entrega rápida, embalagens cuidadosas e qualidade garantida.Experimente o Japão sem sair do lar com nosso delivery!",
-    infos: ["Destaque da Semana", "Brasileira"],
+    infos: ["Brasileira", "Destaque Semanal"],
   },
 
   {
@@ -73,9 +74,9 @@ const Home = () => {
   return (
     <div>
       <Banner />
-      <HomeListCard className="container">
+      <ListCard className="container">
         {foods.map((food) => (
-          <HomeCard
+          <Card
             key={food.id}
             avaliation={food.avaliation}
             description={food.description}
@@ -84,7 +85,7 @@ const Home = () => {
             image={food.image}
           />
         ))}
-      </HomeListCard>
+      </ListCard>
     </div>
   );
 };
