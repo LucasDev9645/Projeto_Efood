@@ -30,3 +30,8 @@ export const ImagePresentationHeader = styled.div`
     font-weight: 400;
   }
 `;
+
+export const CardListContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+`;

@@ -21,7 +21,7 @@ export const HomeCardImage = styled.img`
 `;
 
 export const ContainerDescription = styled.div`
-  padding: 0.5rem;
+  padding: 0.4rem;
 
   a {
     font-size: 0.875rem;
@@ -55,6 +55,7 @@ export const TitleContainer = styled.div`
 
 export const HomeCardDescription = styled.p`
   margin-bottom: 1rem;
+  line-height: 1.5rem;
   font-style: italic;
 `;
 
