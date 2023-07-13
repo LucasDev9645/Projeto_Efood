@@ -1,13 +1,15 @@
-import Banner from "../Banner";
-import Card from "./Card";
+import { Link } from "react-router-dom";
 
+import Card from "./Card";
 import Food from "../../Models/Food";
 
+import efoodLogo from "../../assets/images/logo.svg";
 import imageFood1 from "../../assets/images/laDolce.png";
 import imageFood2 from "../../assets/images/depositphotos_50523105-stock-photo-pizza-with-tomatoes.jpg";
 import imageFood3 from "../../assets/images/sushi.png";
+import ImageHeaderHome from "../../assets/images/fundo.svg";
 
-import { ListCard } from "./styles";
+import { BackgroundHeaderHome, HomeTitle, ListCard } from "./styles";
 
 const foods: Food[] = [
   {
@@ -72,21 +74,33 @@ const foods: Food[] = [
 
 const Home = () => {
   return (
-    <div>
-      <Banner />
-      <ListCard className="container">
-        {foods.map((food) => (
-          <Card
-            key={food.id}
-            avaliation={food.avaliation}
-            description={food.description}
-            title={food.title}
-            infos={food.infos}
-            image={food.image}
-          />
-        ))}
-      </ListCard>
-    </div>
+    <>
+      <BackgroundHeaderHome
+        style={{ backgroundImage: `url(${ImageHeaderHome})` }}
+      >
+        <Link to="/">
+          <img src={efoodLogo} alt="logo efood" />
+        </Link>
+        <HomeTitle>
+          Viva experiências gastronômicas no conforto da sua casa
+        </HomeTitle>
+      </BackgroundHeaderHome>
+
+      <div className="container">
+        <ListCard>
+          {foods.map((food) => (
+            <Card
+              key={food.id}
+              avaliation={food.avaliation}
+              description={food.description}
+              title={food.title}
+              infos={food.infos}
+              image={food.image}
+            />
+          ))}
+        </ListCard>
+      </div>
+    </>
   );
 };
 

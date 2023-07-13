@@ -1,17 +1,7 @@
 import styled from "styled-components";
-
 import { colors } from "../../styles/styles";
 
-export const ImageHeaderProfile = styled.img`
-  position: absolute;
-  top: 0;
-  z-index: -1;
-  width: 100%;
-  background-repeat: no-repeat;
-`;
-
 export const ImagePresentationHeader = styled.div`
-  margin-top: 6rem;
   width: 100%;
   height: 25rem;
   background-repeat: no-repeat;
@@ -33,5 +23,30 @@ export const ImagePresentationHeader = styled.div`
 
 export const CardListContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+
+  ul {
+    margin: 4rem 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+  }
+`;
+
+export const ProfileMenuContainer = styled.div`
+  color: ${colors.red};
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3.6rem;
+  font-weight: 700;
+
+  div {
+    display: flex;
+    align-items: center;
+
+    p {
+      margin-right: 0.5rem;
+    }
+  }
 `;

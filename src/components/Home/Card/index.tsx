@@ -10,6 +10,7 @@ import {
   Infos,
   TitleContainer,
 } from "./styles";
+import { Link } from "react-router-dom";
 
 type Props = {
   id?: number;
@@ -40,7 +41,7 @@ const Card = ({ image, title, avaliation, description, infos }: Props) => {
           </div>
         </TitleContainer>
         <HomeCardDescription>{description}</HomeCardDescription>
-        <a href="#">Saiba mais</a>
+        <Link to="/profile">Saiba mais</Link>
       </ContainerDescription>
     </HomeCardContainer>
   );
