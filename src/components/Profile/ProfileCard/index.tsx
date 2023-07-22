@@ -4,7 +4,11 @@ import PizzaImage from "../../../assets/images/pizza.png";
 
 import { ProfileCardContainer } from "./styles";
 
-const ProfileCard = () => {
+type MeuComponenteProps = {
+  setModalState: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+const ProfileCard = (props: MeuComponenteProps) => {
   return (
     <div className="container">
       <ProfileCardContainer>
@@ -17,7 +21,10 @@ const ProfileCard = () => {
             simplicidade!
           </p>
         </div>
-        <Button name="Adicionar ao Carrinho" />
+        <Button
+          onClick={() => props.setModalState(true)}
+          name="Adicionar ao Carrinho"
+        />
       </ProfileCardContainer>
     </div>
   );

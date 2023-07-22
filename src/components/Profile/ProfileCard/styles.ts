@@ -26,9 +26,13 @@ export const ContainerModalCard = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
+
+  &.visible {
+    display: flex;
+  }
 
   .overlay {
     position: absolute;

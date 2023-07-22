@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import ProfileCard from "./ProfileCard";
@@ -24,6 +25,10 @@ import {
 } from "./ProfileCard/styles";
 
 const Profile = () => {
+  const [openModal, setOpenModal] = useState(false);
+
+  const handleClick = () => setOpenModal(false);
+
   return (
     <div>
       <ImagePresentationHeader
@@ -58,18 +63,18 @@ const Profile = () => {
       </div>
       <CardListContainer className="container">
         <ul>
-          <ProfileCard />
-          <ProfileCard />
-          <ProfileCard />
-          <ProfileCard />
-          <ProfileCard />
-          <ProfileCard />
-          <ProfileCard />
-          <ProfileCard />
-          <ProfileCard />
+          <ProfileCard setModalState={setOpenModal} />
+          <ProfileCard setModalState={setOpenModal} />
+          <ProfileCard setModalState={setOpenModal} />
+          <ProfileCard setModalState={setOpenModal} />
+          <ProfileCard setModalState={setOpenModal} />
+          <ProfileCard setModalState={setOpenModal} />
+          <ProfileCard setModalState={setOpenModal} />
+          <ProfileCard setModalState={setOpenModal} />
+          <ProfileCard setModalState={setOpenModal} />
         </ul>
       </CardListContainer>
-      <ContainerModalCard>
+      <ContainerModalCard className={openModal ? "visible" : ""}>
         <ModalCard>
           <ImgModal>
             <img src={PizzaImage} alt="imagem pizza" />
@@ -77,7 +82,7 @@ const Profile = () => {
           <ModalCardDescription>
             <header>
               <h3>Pizza Marguerita</h3>
-              <img src={Close} alt="imagem pizza" />
+              <img onClick={handleClick} src={Close} alt="imagem pizza" />
             </header>
             <p>
               A pizza Margherita é uma pizza clássica da culinária italiana,
@@ -85,11 +90,6 @@ const Profile = () => {
               com uma base de massa fina e crocante, coberta com molho de tomate
               fresco, queijo mussarela de alta qualidade, manjericão fresco e
               azeite de oliva extra-virgem. A combinação de sabores é perfeita,
-              com o molho de tomate suculento e ligeiramente ácido, o queijo
-              derretido e cremoso e as folhas de manjericão frescas, que
-              adicionam um toque de sabor herbáceo. É uma pizza simples, mas
-              deliciosa, que agrada a todos os paladares e é uma ótima opção
-              para qualquer ocasião.
             </p>
             <p>Serve: de 2 a 3 pessoas</p>
             <Button name="Adicionar ao Carrinho - R$ 60,90" />
