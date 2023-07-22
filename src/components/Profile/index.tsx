@@ -5,7 +5,7 @@ import ProfileCard from "./ProfileCard";
 
 import PizzaImage from "../../assets/images/imageModal.png";
 import Close from "../../assets/images/close.png";
-
+import Button from "../Button";
 import efoodLogo from "../../assets/images/logo.svg";
 import ImageProfileHeader from "../../assets/images/fundocurto.svg";
 import PresentationImage from "../../assets/images/imagemlimpa.png";
@@ -16,7 +16,7 @@ import {
   ImagePresentationHeader,
   ProfileMenuContainer,
 } from "./styles";
-import Button from "../Button";
+
 import {
   ContainerModalCard,
   ImgModal,
@@ -26,6 +26,7 @@ import {
 
 const Profile = () => {
   const [openModal, setOpenModal] = useState(false);
+  const [urlModal, setUrlModal] = useState("");
 
   const handleClick = () => setOpenModal(false);
 
@@ -77,7 +78,7 @@ const Profile = () => {
       <ContainerModalCard className={openModal ? "visible" : ""}>
         <ModalCard>
           <ImgModal>
-            <img src={PizzaImage} alt="imagem pizza" />
+            <img src={urlModal} alt="imagem pizza" />
           </ImgModal>
           <ModalCardDescription>
             <header>
@@ -95,7 +96,7 @@ const Profile = () => {
             <Button name="Adicionar ao Carrinho - R$ 60,90" />
           </ModalCardDescription>
         </ModalCard>
-        <div className="overlay"></div>
+        <div className="overlay" onClick={handleClick}></div>
       </ContainerModalCard>
     </div>
   );

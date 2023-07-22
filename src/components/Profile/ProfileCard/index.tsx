@@ -6,6 +6,7 @@ import { ProfileCardContainer } from "./styles";
 
 type MeuComponenteProps = {
   setModalState: React.Dispatch<React.SetStateAction<boolean>>;
+  setModalUrl?: React.Dispatch<React.SetStateAction<string>>;
 };
 
 const ProfileCard = (props: MeuComponenteProps) => {
@@ -22,7 +23,10 @@ const ProfileCard = (props: MeuComponenteProps) => {
           </p>
         </div>
         <Button
-          onClick={() => props.setModalState(true)}
+          onClick={() => {
+            props.setModalState(true);
+            // props.setModalUrl("");
+          }}
           name="Adicionar ao Carrinho"
         />
       </ProfileCardContainer>

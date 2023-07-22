@@ -16,9 +16,9 @@ type Props = {
   id?: number;
   image: string;
   title: string;
-  avaliation: string;
+  avaliation: number;
   description: string;
-  infos: string[];
+  infos: string;
 };
 
 const Card = ({ image, title, avaliation, description, infos }: Props) => {
@@ -26,11 +26,7 @@ const Card = ({ image, title, avaliation, description, infos }: Props) => {
     <HomeCardContainer>
       <HomeCardImage src={image} alt={title} />
       <Infos>
-        {infos.map((info) => (
-          <Tag key={info} size="small">
-            {info}
-          </Tag>
-        ))}
+        <Tag>{infos}</Tag>
       </Infos>
       <ContainerDescription>
         <TitleContainer>
