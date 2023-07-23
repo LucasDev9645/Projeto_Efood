@@ -21,7 +21,7 @@ type Props = {
   infos: string;
 };
 
-const Card = ({ image, title, avaliation, description, infos }: Props) => {
+const Card = ({ image, title, avaliation, description, infos, id }: Props) => {
   return (
     <HomeCardContainer>
       <HomeCardImage src={image} alt={title} />
@@ -37,7 +37,7 @@ const Card = ({ image, title, avaliation, description, infos }: Props) => {
           </div>
         </TitleContainer>
         <HomeCardDescription>{description}</HomeCardDescription>
-        <Link to="/profile">Saiba mais</Link>
+        <Link to={`/profile/${id}`}>Saiba mais</Link>
       </ContainerDescription>
     </HomeCardContainer>
   );

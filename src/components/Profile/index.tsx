@@ -1,14 +1,16 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 
 import ProfileCard from "./ProfileCard";
+import { Restaurants } from "../../util/types";
+import { Base_URL } from "../../util/api";
 
 import PizzaImage from "../../assets/images/imageModal.png";
 import Close from "../../assets/images/close.png";
 import Button from "../Button";
 import efoodLogo from "../../assets/images/logo.svg";
 import ImageProfileHeader from "../../assets/images/fundocurto.svg";
-import PresentationImage from "../../assets/images/imagemlimpa.png";
+
 import Cart from "../../assets/images/cart.svg";
 
 import {
@@ -27,8 +29,17 @@ import {
 const Profile = () => {
   const [openModal, setOpenModal] = useState(false);
   const [urlModal, setUrlModal] = useState("");
+  const [restaurant, setRestaurant] = useState<Restaurants>([]);
+
+  const paramsId = useParams();
 
   const handleClick = () => setOpenModal(false);
+
+  useEffect(() => {
+    fetch(`${Base_URL}/${paramsId.id}`)
+      .then((res) => res.json())
+      .then((res) => setRestaurant(res));
+  }, [paramsId]);
 
   return (
     <div>
@@ -54,27 +65,32 @@ const Profile = () => {
 
       <div>
         <ImagePresentationHeader
-          style={{ backgroundImage: `url(${PresentationImage})` }}
+          style={{
+            backgroundImage: `url(${restaurant.capa})`,
+          }}
         >
           <div className="container">
-            <h1>La Dolce Vita Trattoria</h1>
-            <h2>Italiana</h2>
+            <h1>{restaurant.titulo}</h1>
+            <h2>{restaurant.tipo}</h2>
           </div>
         </ImagePresentationHeader>
       </div>
+
       <CardListContainer className="container">
         <ul>
-          <ProfileCard setModalState={setOpenModal} />
-          <ProfileCard setModalState={setOpenModal} />
-          <ProfileCard setModalState={setOpenModal} />
-          <ProfileCard setModalState={setOpenModal} />
-          <ProfileCard setModalState={setOpenModal} />
-          <ProfileCard setModalState={setOpenModal} />
-          <ProfileCard setModalState={setOpenModal} />
-          <ProfileCard setModalState={setOpenModal} />
-          <ProfileCard setModalState={setOpenModal} />
+          {restaurant.cardapio?.map((food) => (
+            <ProfileCard
+              key={food.id}
+              foto={food.foto}
+              nome={food.nome}
+              descricao={food.descricao}
+              setModalUrl={setUrlModal}
+              setModalState={setOpenModal}
+            />
+          ))}
         </ul>
       </CardListContainer>
+
       <ContainerModalCard className={openModal ? "visible" : ""}>
         <ModalCard>
           <ImgModal>

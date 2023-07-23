@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import Card from "./Card";
 import { Restaurants } from "../../util/types";
 import { getDescription } from "../../util/maxLength";
+import { Base_URL } from "../../util/api";
 
 import efoodLogo from "../../assets/images/logo.svg";
 import ImageHeaderHome from "../../assets/images/fundo.svg";
@@ -13,11 +14,13 @@ import { BackgroundHeaderHome, HomeTitle, ListCard } from "./styles";
 const Home = () => {
   const [foods, setFoods] = useState<Restaurants[]>([]);
 
+  const paramsId = useParams();
+
   useEffect(() => {
-    fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes`)
+    fetch(`${Base_URL}`)
       .then((res) => res.json())
       .then((res) => setFoods(res));
-  }, []);
+  }, [paramsId]);
 
   return (
     <>
@@ -42,6 +45,7 @@ const Home = () => {
               title={food.titulo}
               infos={food.tipo}
               image={food.capa}
+              id={food.id}
             />
           ))}
         </ListCard>

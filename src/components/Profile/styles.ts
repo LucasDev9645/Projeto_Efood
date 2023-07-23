@@ -26,6 +26,7 @@ export const CardListContainer = styled.div`
   justify-items: center;
 
   ul {
+    display: inline;
     margin: 4rem 0;
     display: grid;
     grid-template-columns: repeat(3, 1fr);

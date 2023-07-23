@@ -10,6 +10,11 @@ export const ProfileCardContainer = styled.div`
   line-height: 1.375rem;
   border-radius: 0.5rem;
 
+  img {
+    width: 19rem;
+    height: 10.25rem;
+  }
+
   h3 {
     margin-bottom: 0.5rem;
   }

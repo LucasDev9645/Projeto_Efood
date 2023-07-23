@@ -3,29 +3,36 @@ import Button from "../../Button";
 import PizzaImage from "../../../assets/images/pizza.png";
 
 import { ProfileCardContainer } from "./styles";
+import { Restaurants } from "../../../util/types";
 
-type MeuComponenteProps = {
+type Props = {
   setModalState: React.Dispatch<React.SetStateAction<boolean>>;
   setModalUrl?: React.Dispatch<React.SetStateAction<string>>;
+  foto: string;
+  nome: string;
+  descricao: string;
 };
 
-const ProfileCard = (props: MeuComponenteProps) => {
+const ProfileCard = ({ setModalState, foto, nome, descricao }: Props) => {
+  const getDescription = (description: string) => {
+    if (description.length > 100) {
+      return description.slice(0, 150) + " ...";
+    }
+    return description;
+  };
+
   return (
     <div className="container">
       <ProfileCardContainer>
-        <img src={PizzaImage} alt="imagem pizza" />
+        <img src={foto} alt="imagem da pizza" />
         <div>
-          <h3>Pizza Marguerita</h3>
-          <p>
-            A clássica Marguerita: molho de tomate suculento, mussarela
-            derretida, manjericão fresco e um toque de azeite. Sabor e
-            simplicidade!
-          </p>
+          <h3>{nome}</h3>
+          <p>{getDescription(descricao)}</p>
         </div>
         <Button
           onClick={() => {
-            props.setModalState(true);
-            // props.setModalUrl("");
+            setModalState(true);
+            // setModalUrl();
           }}
           name="Adicionar ao Carrinho"
         />
