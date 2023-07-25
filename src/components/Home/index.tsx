@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import Card from "./Card";
 import { Restaurants } from "../../util/types";
@@ -27,9 +27,8 @@ const Home = () => {
       <BackgroundHeaderHome
         style={{ backgroundImage: `url(${ImageHeaderHome})` }}
       >
-        <Link to="/">
-          <img src={efoodLogo} alt="logo efood" />
-        </Link>
+        <img src={efoodLogo} alt="logo efood" />
+
         <HomeTitle>
           Viva experiências gastronômicas no conforto da sua casa
         </HomeTitle>

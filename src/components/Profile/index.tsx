@@ -5,11 +5,9 @@ import ProfileCard from "./ProfileCard";
 import { Restaurants } from "../../util/types";
 import { Base_URL } from "../../util/api";
 
-import PizzaImage from "../../assets/images/imageModal.png";
-import Close from "../../assets/images/close.png";
-import Button from "../Button";
 import efoodLogo from "../../assets/images/logo.svg";
 import ImageProfileHeader from "../../assets/images/fundocurto.svg";
+import PizzaImage from "../../assets/images/pizza.png";
 
 import Cart from "../../assets/images/cart.svg";
 
@@ -24,12 +22,23 @@ import {
   ImgModal,
   ModalCard,
   ModalCardDescription,
-} from "./ProfileCard/styles";
+} from "./styles";
 
-const Profile = () => {
-  const [openModal, setOpenModal] = useState(false);
-  const [urlModal, setUrlModal] = useState("");
+import Button from "../Button";
+import Close from "../../assets/images/close.png";
+
+type Props = {
+  foto: string;
+  preco: number;
+  id: number;
+  nome: string;
+  descricao: string;
+  porcao: string;
+};
+
+const Profile = ({ nome }: Props) => {
   const [restaurant, setRestaurant] = useState<Restaurants>([]);
+  const [openModal, setOpenModal] = useState(false);
 
   const paramsId = useParams();
 
@@ -50,10 +59,10 @@ const Profile = () => {
         }}
       >
         <ProfileMenuContainer className="container">
-          <h3>Restaurantes</h3>
           <Link to="/">
-            <img src={efoodLogo} alt="logo efood" />
+            <h3>Restaurantes</h3>
           </Link>
+          <img src={efoodLogo} alt="logo efood" />
           <div>
             <p>0-produto(s)</p>
             <a href="#">
@@ -84,7 +93,6 @@ const Profile = () => {
               foto={food.foto}
               nome={food.nome}
               descricao={food.descricao}
-              setModalUrl={setUrlModal}
               setModalState={setOpenModal}
             />
           ))}
@@ -94,11 +102,11 @@ const Profile = () => {
       <ContainerModalCard className={openModal ? "visible" : ""}>
         <ModalCard>
           <ImgModal>
-            <img src={urlModal} alt="imagem pizza" />
+            <img src={PizzaImage} alt="imagem pizza" />
           </ImgModal>
           <ModalCardDescription>
             <header>
-              <h3>Pizza Marguerita</h3>
+              <h3>{nome}</h3>
               <img onClick={handleClick} src={Close} alt="imagem pizza" />
             </header>
             <p>

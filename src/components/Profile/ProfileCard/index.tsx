@@ -1,13 +1,10 @@
+import { Restaurants } from "../../../util/types";
 import Button from "../../Button";
 
-import PizzaImage from "../../../assets/images/pizza.png";
-
 import { ProfileCardContainer } from "./styles";
-import { Restaurants } from "../../../util/types";
 
 type Props = {
   setModalState: React.Dispatch<React.SetStateAction<boolean>>;
-  setModalUrl?: React.Dispatch<React.SetStateAction<string>>;
   foto: string;
   nome: string;
   descricao: string;
@@ -32,7 +29,6 @@ const ProfileCard = ({ setModalState, foto, nome, descricao }: Props) => {
         <Button
           onClick={() => {
             setModalState(true);
-            // setModalUrl();
           }}
           name="Adicionar ao Carrinho"
         />
