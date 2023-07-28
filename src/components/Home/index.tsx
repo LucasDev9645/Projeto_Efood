@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 import Card from "./Card";
 import { Restaurants } from "../../util/types";
-import { getDescription } from "../../util/maxLength";
+import { getDescription } from "../../util/ultilits";
 import { Base_URL } from "../../util/api";
 
 import efoodLogo from "../../assets/images/logo.svg";

@@ -1,16 +1,14 @@
-import { Restaurants } from "../../../util/types";
 import Button from "../../Button";
-
 import { ProfileCardContainer } from "./styles";
 
-type Props = {
-  setModalState: React.Dispatch<React.SetStateAction<boolean>>;
+export type Props = {
+  setModalOpen: (state: boolean) => void;
   foto: string;
   nome: string;
   descricao: string;
 };
 
-const ProfileCard = ({ setModalState, foto, nome, descricao }: Props) => {
+const ProfileCard = ({ setModalOpen, foto, nome, descricao }: Props) => {
   const getDescription = (description: string) => {
     if (description.length > 100) {
       return description.slice(0, 150) + " ...";
@@ -28,7 +26,7 @@ const ProfileCard = ({ setModalState, foto, nome, descricao }: Props) => {
         </div>
         <Button
           onClick={() => {
-            setModalState(true);
+            setModalOpen(true);
           }}
           name="Adicionar ao Carrinho"
         />
