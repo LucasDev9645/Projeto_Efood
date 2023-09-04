@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import Tag from "../../Tag";
 
 import Star from "../../../assets/images/estrela.svg";
@@ -10,7 +12,6 @@ import {
   Infos,
   TitleContainer,
 } from "./styles";
-import { Link } from "react-router-dom";
 
 type Props = {
   id?: number;

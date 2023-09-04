@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 import ProfileCard from "./ProfileCard";
-import { Menu, Restaurants } from "../../util/types";
-import { Base_URL } from "../../util/api";
+import { Menu } from "../../util/types";
+import { useGetRestaurantQuery } from "../../services/api";
+
 import Modal from "../Modal";
 
 import efoodLogo from "../../assets/images/logo.svg";
@@ -19,21 +20,12 @@ import {
 import { ContainerModalCard } from "./styles";
 
 const Profile = () => {
-  const [restaurant, setRestaurant] = useState<Restaurants>();
   const [openModal, setOpenModal] = useState(false);
   const [modalDate, setModalDate] = useState<Menu>();
 
   const paramsId = useParams();
 
-  const handleClick = () => setOpenModal(false);
-
-  useEffect(() => {
-    fetch(`${Base_URL}/${paramsId.id}`)
-      .then((res) => res.json())
-      .then((res) => {
-        setRestaurant(res);
-      });
-  }, [paramsId]);
+  const { data: restaurant } = useGetRestaurantQuery(paramsId.id!);
 
   if (restaurant)
     return (
@@ -88,7 +80,7 @@ const Profile = () => {
 
         <ContainerModalCard className={openModal ? "visible" : ""}>
           <Modal modalDate={modalDate} setModalClose={setOpenModal} />
-          <div className="overlay" onClick={handleClick}></div>
+          <div className="overlay" onClick={() => setOpenModal(false)} />
         </ContainerModalCard>
       </div>
     );

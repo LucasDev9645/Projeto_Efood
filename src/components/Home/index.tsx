@@ -1,10 +1,6 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-
 import Card from "./Card";
-import { Restaurants } from "../../util/types";
 import { getDescription } from "../../util/ultilits";
-import { Base_URL } from "../../util/api";
+import { useGetRestaurantsQuery } from "../../services/api";
 
 import efoodLogo from "../../assets/images/logo.svg";
 import ImageHeaderHome from "../../assets/images/fundo.svg";
@@ -12,15 +8,7 @@ import ImageHeaderHome from "../../assets/images/fundo.svg";
 import { BackgroundHeaderHome, HomeTitle, ListCard } from "./styles";
 
 const Home = () => {
-  const [foods, setFoods] = useState<Restaurants[]>([]);
-
-  const paramsId = useParams();
-
-  useEffect(() => {
-    fetch(`${Base_URL}`)
-      .then((res) => res.json())
-      .then((res) => setFoods(res));
-  }, [paramsId]);
+  const { data: foods, isLoading } = useGetRestaurantsQuery();
 
   return (
     <>
@@ -36,17 +24,18 @@ const Home = () => {
 
       <div className="container">
         <ListCard>
-          {foods.map((food) => (
-            <Card
-              key={food.id}
-              avaliation={food.avaliacao}
-              description={getDescription(food.descricao)}
-              title={food.titulo}
-              infos={food.tipo}
-              image={food.capa}
-              id={food.id}
-            />
-          ))}
+          {foods &&
+            foods.map((food) => (
+              <Card
+                key={food.id}
+                avaliation={food.avaliacao}
+                description={getDescription(food.descricao)}
+                title={food.titulo}
+                infos={food.tipo}
+                image={food.capa}
+                id={food.id}
+              />
+            ))}
         </ListCard>
       </div>
     </>
