@@ -1,4 +1,5 @@
 import Button from "../../Button";
+
 import { ProfileCardContainer } from "./styles";
 
 export type Props = {

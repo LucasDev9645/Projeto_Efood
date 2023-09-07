@@ -51,6 +51,7 @@ export const ProfileMenuContainer = styled.div`
 
   a {
     color: ${colors.red};
+    cursor: pointer;
   }
 
   div {

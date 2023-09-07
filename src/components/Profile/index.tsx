@@ -1,15 +1,18 @@
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 import ProfileCard from "./ProfileCard";
 import { Menu } from "../../util/types";
 import { useGetRestaurantQuery } from "../../services/api";
+import { open } from "../../store/reducers/cart";
 
 import Modal from "../Modal";
 
 import efoodLogo from "../../assets/images/logo.svg";
 import ImageProfileHeader from "../../assets/images/fundocurto.svg";
 import Cart from "../../assets/images/cart.svg";
+import { RootReducer } from "../../store";
 
 import {
   CardListContainer,
@@ -24,8 +27,10 @@ const Profile = () => {
   const [modalDate, setModalDate] = useState<Menu>();
 
   const paramsId = useParams();
-
   const { data: restaurant } = useGetRestaurantQuery(paramsId.id!);
+
+  const dispatch = useDispatch();
+  const { items } = useSelector((state: RootReducer) => state.cart);
 
   if (restaurant)
     return (
@@ -42,8 +47,8 @@ const Profile = () => {
             </Link>
             <img src={efoodLogo} alt="logo efood" />
             <div>
-              <p>0-produto(s)</p>
-              <a href="#">
+              <p>{items.length} - produto(s)</p>
+              <a onClick={() => dispatch(open())}>
                 <img src={Cart} alt="imagem carrinho" />
               </a>
             </div>

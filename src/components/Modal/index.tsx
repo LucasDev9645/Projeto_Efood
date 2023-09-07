@@ -1,5 +1,8 @@
+import { useDispatch } from "react-redux";
+
 import Button from "../Button";
 import { Menu } from "../../util/types";
+import { add, open } from "../../store/reducers/cart";
 
 import Close from "../../assets/images/close.png";
 
@@ -12,6 +15,13 @@ type Props = {
 };
 
 const Modal = ({ modalDate, setModalClose }: Props) => {
+  const dispatch = useDispatch();
+
+  const addToCart = () => {
+    dispatch(add(modalDate!));
+    dispatch(open());
+  };
+
   return (
     <ModalCard>
       <ImgModal>
@@ -29,6 +39,10 @@ const Modal = ({ modalDate, setModalClose }: Props) => {
         <p>{modalDate?.descricao}</p>
         <p>{modalDate?.porcao}</p>
         <Button
+          onClick={() => {
+            addToCart();
+            setModalClose(false);
+          }}
           name={`Adicionar ao Carrinho - R$ ${formatPrice(modalDate?.preco)}`}
         />
       </ModalCardDescription>

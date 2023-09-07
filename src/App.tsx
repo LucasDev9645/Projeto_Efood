@@ -5,6 +5,7 @@ import { store } from "./store";
 import Footer from "./components/Footer";
 import Home from "./components/Home";
 import Profile from "./components/Profile";
+import Cart from "./components/Cart";
 
 import { GlobalCss } from "./styles/styles";
 
@@ -18,6 +19,7 @@ const App = () => {
           <Route path="/profile/:id" element={<Profile />} />
         </Routes>
         <Footer />
+        <Cart />
       </BrowserRouter>
     </Provider>
   );
