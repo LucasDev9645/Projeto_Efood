@@ -5,11 +5,13 @@ import { Menu } from "../../util/types";
 type CartState = {
   items: Menu[];
   isOpen: boolean;
+  isOrderOpen: boolean;
 };
 
 const initialState: CartState = {
   items: [],
   isOpen: false,
+  isOrderOpen: false,
 };
 
 const cartSlice = createSlice({
@@ -33,9 +35,16 @@ const cartSlice = createSlice({
     close: (state) => {
       state.isOpen = false;
     },
+    orderOpen: (state) => {
+      state.isOrderOpen = true;
+    },
+    closeOrderOpen: (state) => {
+      state.isOrderOpen = false;
+    },
   },
 });
 
-export const { add, open, close, remove } = cartSlice.actions;
+export const { add, open, close, remove, orderOpen, closeOrderOpen } =
+  cartSlice.actions;
 
 export default cartSlice.reducer;

@@ -11,4 +11,8 @@ export const ButtonStyles = styled.button`
   font-weight: 700;
   border-radius: 0.5rem;
   cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
 `;

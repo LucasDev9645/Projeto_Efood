@@ -4,7 +4,7 @@ import Button from "../Button";
 import { RootReducer } from "../../store";
 
 import bin from "../../assets/images/lixeira-de-reciclagem 1.png";
-import { close, remove } from "../../store/reducers/cart";
+import { close, remove, orderOpen } from "../../store/reducers/cart";
 import { formatPrice } from "../../util/ultilits";
 
 import {
@@ -25,6 +25,11 @@ const Cart = () => {
     return items.reduce((acumulator, value) => {
       return (acumulator += value.preco);
     }, 0);
+  };
+
+  const openOrder = () => {
+    dispatch(orderOpen());
+    dispatch(close());
   };
 
   return (
@@ -52,7 +57,7 @@ const Cart = () => {
             <Price>
               Valor Total: <span>{formatPrice(getTotalPrice())}</span>
             </Price>
-            <Button name="Continuar com a Entrega" />
+            <Button name="Continuar com a Entrega" onClick={openOrder} />
           </SideBar>
         </CartContainer>
       ) : (
