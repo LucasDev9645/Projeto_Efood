@@ -4,8 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
-import { closeOrderOpen, open, close } from "../../store/reducers/cart";
+import { closeOrderOpen, open, clear } from "../../store/reducers/cart";
 import { RootReducer } from "../../store";
+import { usePurchaseMutation } from "../../services/api";
 
 import { Overlay } from "../Cart/style";
 import * as S from "./style";
@@ -14,7 +15,8 @@ import Button from "../Button";
 const Checkout = () => {
   const { isOrderOpen } = useSelector((state: RootReducer) => state.cart);
   const [continuarPagamento, setContinuarPagamento] = useState(false);
-  const [message, setMessage] = useState(false);
+  const [purchase, { isLoading, isError, data, isSuccess }] =
+    usePurchaseMutation();
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -54,9 +56,7 @@ const Checkout = () => {
         .required("O campo é obrigatório"),
       complement: Yup.string()
         .min(4, "O complemento precisa ter pelo menos 4 caracteres")
-        .max(12)
-        .required("O campo é obrigatório"),
-
+        .max(12),
       cardOwner: Yup.string()
         .min(10, "O nome do titular precisa ter pelo menos 10 caracteres")
         .max(20)
@@ -79,26 +79,37 @@ const Checkout = () => {
         .required("O campo é obrigatório"),
     }),
     onSubmit: (values) => {
-      console.log(values);
+      purchase({
+        delivery: {
+          receiver: values.fullName,
+          address: {
+            description: values.address,
+            city: values.city,
+            zipCode: values.zipCode,
+            number: Number(values.number),
+            complement: values.complement,
+          },
+        },
+        payment: {
+          card: {
+            name: values.cardOwner,
+            number: values.cardNumber,
+            code: Number(values.cardCode),
+            expires: {
+              month: Number(values.expiresMonth),
+              year: Number(values.expiresYear),
+            },
+          },
+        },
+        products: [
+          {
+            id: 1,
+            price: 10,
+          },
+        ],
+      });
     },
   });
-
-  const addToCart = () => {
-    dispatch(open());
-    dispatch(closeOrderOpen());
-  };
-
-  const pagamento = () => {
-    setContinuarPagamento(true);
-  };
-
-  const buyMessage = () => {
-    setMessage(true);
-  };
-
-  const closeCart = () => {
-    navigate("/");
-  };
 
   const getErrorMessage = (fieldName: string, message?: string) => {
     const isChanged = fieldName in form.touched;
@@ -108,13 +119,28 @@ const Checkout = () => {
     return "";
   };
 
+  const addToCart = () => {
+    dispatch(open());
+    dispatch(closeOrderOpen());
+  };
+
+  const nextPayment = () => {
+    setContinuarPagamento(true);
+  };
+
+  const closeCart = () => {
+    navigate("/");
+    dispatch(closeOrderOpen());
+    dispatch(clear());
+  };
+
   return (
     <>
-      {message ? (
+      {isSuccess ? (
         <S.MessageContainer>
           <Overlay />
           <S.CompletionMessage>
-            <h3>Pedido realizado - 435345</h3>
+            <h3>Pedido realizado - {data.orderId}</h3>
             <p>
               Estamos felizes em informar que seu pedido já está em processo de
               preparação e, em breve, será entregue no endereço fornecido.
@@ -224,7 +250,7 @@ const Checkout = () => {
                 </small>
               </S.InputGroup>
               <S.ButtonPaymentContainer>
-                <p onClick={pagamento}>Continuar com o pagamento</p>
+                <p onClick={nextPayment}>Continuar com o pagamento</p>
                 <p onClick={addToCart}>Voltar para o carrinho</p>
               </S.ButtonPaymentContainer>
             </S.FormBar>
