@@ -5,25 +5,25 @@ import { useGetRestaurantsQuery } from "../../services/api";
 import efoodLogo from "../../assets/images/logo.svg";
 import ImageHeaderHome from "../../assets/images/fundo.svg";
 
-import { BackgroundHeaderHome, HomeTitle, ListCard } from "./styles";
+import * as S from "./styles";
 
 const Home = () => {
   const { data: foods, isLoading } = useGetRestaurantsQuery();
 
   return (
     <>
-      <BackgroundHeaderHome
+      <S.BackgroundHeaderHome
         style={{ backgroundImage: `url(${ImageHeaderHome})` }}
       >
         <img src={efoodLogo} alt="logo efood" />
 
-        <HomeTitle>
+        <S.HomeTitle>
           Viva experiências gastronômicas no conforto da sua casa
-        </HomeTitle>
-      </BackgroundHeaderHome>
+        </S.HomeTitle>
+      </S.BackgroundHeaderHome>
 
       <div className="container">
-        <ListCard>
+        <S.ListCard>
           {foods &&
             foods.map((food) => (
               <Card
@@ -36,7 +36,7 @@ const Home = () => {
                 id={food.id}
               />
             ))}
-        </ListCard>
+        </S.ListCard>
       </div>
     </>
   );

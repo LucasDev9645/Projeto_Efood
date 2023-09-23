@@ -1,4 +1,4 @@
-import { ButtonStyles } from "./styled";
+import * as S from "./styled";
 
 type Props = {
   name: string;
@@ -12,9 +12,9 @@ type Props = {
 
 const Button = ({ name, onClick, type }: Props) => {
   return (
-    <ButtonStyles onClick={onClick} type={type}>
+    <S.ButtonStyles onClick={onClick} type={type}>
       {name}
-    </ButtonStyles>
+    </S.ButtonStyles>
   );
 };
 

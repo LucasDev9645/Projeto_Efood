@@ -27,13 +27,13 @@ const RestaurantHeader = () => {
         }}
       >
         <S.ProfileMenuContainer className="container">
-          <Link to="/">
+          <Link title="Clique aqui para acessar a lista de restaurantes" to="/">
             <h3>Restaurantes</h3>
           </Link>
           <img src={efoodLogo} alt="logo efood" />
           <div>
             <p>{items.length} - produto(s)</p>
-            <a onClick={() => dispatch(open())}>
+            <a title="Carrinho de produtos" onClick={() => dispatch(open())}>
               <img src={Cart} alt="imagem carrinho" />
             </a>
           </div>

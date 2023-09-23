@@ -4,14 +4,7 @@ import Tag from "../../Tag";
 
 import Star from "../../../assets/images/estrela.svg";
 
-import {
-  ContainerDescription,
-  HomeCardContainer,
-  HomeCardDescription,
-  HomeCardImage,
-  Infos,
-  TitleContainer,
-} from "./styles";
+import * as S from "./styles";
 
 type Props = {
   id?: number;
@@ -24,23 +17,28 @@ type Props = {
 
 const Card = ({ image, title, avaliation, description, infos, id }: Props) => {
   return (
-    <HomeCardContainer>
-      <HomeCardImage src={image} alt={title} />
-      <Infos>
+    <S.HomeCardContainer>
+      <S.HomeCardImage src={image} alt={title} />
+      <S.Infos>
         <Tag>{infos}</Tag>
-      </Infos>
-      <ContainerDescription>
-        <TitleContainer>
+      </S.Infos>
+      <S.ContainerDescription>
+        <S.TitleContainer>
           <h3>{title}</h3>
           <div>
             <p>{avaliation}</p>
             <img src={Star} alt="estrela" />
           </div>
-        </TitleContainer>
-        <HomeCardDescription>{description}</HomeCardDescription>
-        <Link to={`/profile/${id}`}>Saiba mais</Link>
-      </ContainerDescription>
-    </HomeCardContainer>
+        </S.TitleContainer>
+        <S.HomeCardDescription>{description}</S.HomeCardDescription>
+        <Link
+          title="Mais informações sobre o restaurtante"
+          to={`/profile/${id}`}
+        >
+          Saiba mais
+        </Link>
+      </S.ContainerDescription>
+    </S.HomeCardContainer>
   );
 };
 

@@ -1,6 +1,6 @@
 import Button from "../../Button";
 
-import { ProfileCardContainer } from "./styles";
+import * as S from "./styles";
 
 export type Props = {
   setModalOpen: (state: boolean) => void;
@@ -19,7 +19,7 @@ const ProfileCard = ({ setModalOpen, foto, nome, descricao }: Props) => {
 
   return (
     <div className="container">
-      <ProfileCardContainer>
+      <S.ProfileCardContainer>
         <img src={foto} alt="imagem da pizza" />
         <div>
           <h3>{nome}</h3>
@@ -31,7 +31,7 @@ const ProfileCard = ({ setModalOpen, foto, nome, descricao }: Props) => {
           }}
           name="Adicionar ao Carrinho"
         />
-      </ProfileCardContainer>
+      </S.ProfileCardContainer>
     </div>
   );
 };

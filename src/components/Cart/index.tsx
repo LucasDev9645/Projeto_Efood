@@ -2,19 +2,12 @@ import { useSelector, useDispatch } from "react-redux";
 
 import Button from "../Button";
 import { RootReducer } from "../../store";
+import { formatPrice } from "../../util/ultilits";
 
 import bin from "../../assets/images/lixeira-de-reciclagem 1.png";
 import { close, remove, orderOpen } from "../../store/reducers/cart";
-import { formatPrice } from "../../util/ultilits";
 
-import {
-  BinStyles,
-  CartContainer,
-  ImageFood,
-  Overlay,
-  Price,
-  SideBar,
-} from "./style";
+import * as S from "./style";
 
 const Cart = () => {
   const { isOpen, items } = useSelector((state: RootReducer) => state.cart);
@@ -35,17 +28,17 @@ const Cart = () => {
   return (
     <>
       {items.length !== 0 ? (
-        <CartContainer className={isOpen ? "is-open" : ""}>
-          <Overlay onClick={() => dispatch(close())} />
-          <SideBar>
+        <S.CartContainer className={isOpen ? "is-open" : ""}>
+          <S.Overlay onClick={() => dispatch(close())} />
+          <S.SideBar>
             <ul>
               {items.map((item) => (
                 <li key={item.id}>
-                  <ImageFood src={item.foto} alt={item.nome} />
+                  <S.ImageFood src={item.foto} alt={item.nome} />
                   <div>
                     <h3>{item.nome}</h3>
                     <p>{formatPrice(item.preco)}</p>
-                    <BinStyles
+                    <S.BinStyles
                       onClick={() => dispatch(remove(item.id))}
                       src={bin}
                       alt="remover do carrinho"
@@ -54,12 +47,12 @@ const Cart = () => {
                 </li>
               ))}
             </ul>
-            <Price>
+            <S.Price>
               Valor Total: <span>{formatPrice(getTotalPrice())}</span>
-            </Price>
+            </S.Price>
             <Button name="Continuar com a Entrega" onClick={openOrder} />
-          </SideBar>
-        </CartContainer>
+          </S.SideBar>
+        </S.CartContainer>
       ) : (
         ""
       )}

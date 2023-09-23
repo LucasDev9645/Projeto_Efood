@@ -5,13 +5,13 @@ import { store } from "./store";
 import ApplicationRoutes from "./routes";
 import Footer from "./components/Footer";
 
-import { GlobalCss } from "./styles/styles";
+import * as S from "./styles/styles";
 
 const App = () => {
   return (
     <Provider store={store}>
       <BrowserRouter>
-        <GlobalCss />
+        <S.GlobalCss />
         <ApplicationRoutes />
         <Footer />
       </BrowserRouter>

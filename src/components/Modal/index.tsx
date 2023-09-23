@@ -3,11 +3,11 @@ import { useDispatch } from "react-redux";
 import Button from "../Button";
 import { Menu } from "../../util/types";
 import { add, open } from "../../store/reducers/cart";
+import { formatPrice } from "../../util/ultilits";
 
 import Close from "../../assets/images/close.png";
 
-import { ImgModal, ModalCard, ModalCardDescription } from "./styles";
-import { formatPrice } from "../../util/ultilits";
+import * as S from "./styles";
 
 type Props = {
   setModalClose: (state: boolean) => void;
@@ -23,11 +23,11 @@ const Modal = ({ modalDate, setModalClose }: Props) => {
   };
 
   return (
-    <ModalCard>
-      <ImgModal>
+    <S.ModalCard>
+      <S.ImgModal>
         <img src={modalDate?.foto} alt={modalDate?.nome} />
-      </ImgModal>
-      <ModalCardDescription>
+      </S.ImgModal>
+      <S.ModalCardDescription>
         <header>
           <h2>{modalDate?.nome}</h2>
           <img
@@ -45,8 +45,8 @@ const Modal = ({ modalDate, setModalClose }: Props) => {
           }}
           name={`Adicionar ao Carrinho - R$ ${formatPrice(modalDate?.preco)}`}
         />
-      </ModalCardDescription>
-    </ModalCard>
+      </S.ModalCardDescription>
+    </S.ModalCard>
   );
 };
 
