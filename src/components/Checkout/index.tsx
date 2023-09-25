@@ -4,17 +4,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
+import Button from "../Button";
 import { closeOrderOpen, open, clear } from "../../store/reducers/cart";
 import { RootReducer } from "../../store";
 import { usePurchaseMutation } from "../../services/api";
 
 import { Overlay } from "../Cart/style";
 import * as S from "./style";
-import Button from "../Button";
 
 const Checkout = () => {
   const { isOrderOpen } = useSelector((state: RootReducer) => state.cart);
-  const [continuarPagamento, setContinuarPagamento] = useState(false);
+  const [continuePayment, setContinuePayment] = useState(false);
   const [purchase, { isLoading, isError, data, isSuccess }] =
     usePurchaseMutation();
 
@@ -54,29 +54,21 @@ const Checkout = () => {
         .min(1, "O número precisa ter pelo menos 1 caracteres")
         .max(5)
         .required("O campo é obrigatório"),
-      complement: Yup.string()
-        .min(4, "O complemento precisa ter pelo menos 4 caracteres")
-        .max(12),
-      cardOwner: Yup.string()
-        .min(10, "O nome do titular precisa ter pelo menos 10 caracteres")
-        .max(20)
-        .required("O campo é obrigatório"),
-      cardNumber: Yup.string()
-        .min(19, " Cartão inválido")
-        .max(19)
-        .required("O campo é obrigatório"),
-      cardCode: Yup.string()
-        .min(3, "Codígo inválido")
-        .max(3)
-        .required("O campo é obrigatório"),
-      expiresMonth: Yup.string()
-        .min(2, "Data inválida")
-        .max(2)
-        .required("O campo é obrigatório"),
-      expiresYear: Yup.string()
-        .min(2, "Data inválida")
-        .max(2)
-        .required("O campo é obrigatório"),
+      cardOwner: Yup.string().when((values, schema) =>
+        continuePayment ? schema.required("O campo é obrigatório") : schema
+      ),
+      cardNumber: Yup.string().when((values, schema) =>
+        continuePayment ? schema.required("O campo é obrigatório") : schema
+      ),
+      cardCode: Yup.string().when((values, schema) =>
+        continuePayment ? schema.required("O campo é obrigatório") : schema
+      ),
+      expiresMonth: Yup.string().when((values, schema) =>
+        continuePayment ? schema.required("O campo é obrigatório") : schema
+      ),
+      expiresYear: Yup.string().when((values, schema) =>
+        continuePayment ? schema.required("O campo é obrigatório") : schema
+      ),
     }),
     onSubmit: (values) => {
       purchase({
@@ -125,7 +117,11 @@ const Checkout = () => {
   };
 
   const nextPayment = () => {
-    setContinuarPagamento(true);
+    form.validateForm().then((errors) => {
+      if (Object.keys(errors).length === 0) {
+        setContinuePayment(true);
+      }
+    });
   };
 
   const closeCart = () => {
@@ -245,9 +241,6 @@ const Checkout = () => {
                   onChange={form.handleChange}
                   onBlur={form.handleBlur}
                 />
-                <small>
-                  {getErrorMessage("complement", form.errors.complement)}
-                </small>
               </S.InputGroup>
               <S.ButtonPaymentContainer>
                 <p onClick={nextPayment}>Continuar com o pagamento</p>
@@ -255,7 +248,7 @@ const Checkout = () => {
               </S.ButtonPaymentContainer>
             </S.FormBar>
           </S.OrderContainer>
-          {continuarPagamento ? (
+          {continuePayment ? (
             <S.OrderConfirm>
               <S.FormBar>
                 <p>Pagamento - Valor a pagar R$ 134,00</p>
@@ -342,7 +335,7 @@ const Checkout = () => {
                   <Button name="Finalizar Pagamento" type="submit" />
                   <Button
                     name="Voltar para a edição de endereço"
-                    onClick={() => setContinuarPagamento(false)}
+                    onClick={() => setContinuePayment(false)}
                   />
                 </S.ButtonsContainer>
               </S.FormBar>

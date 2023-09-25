@@ -1,4 +1,5 @@
 import Card from "./Card";
+import Loader from "../Loader";
 import { getDescription } from "../../util/ultilits";
 import { useGetRestaurantsQuery } from "../../services/api";
 
@@ -16,27 +17,29 @@ const Home = () => {
         style={{ backgroundImage: `url(${ImageHeaderHome})` }}
       >
         <img src={efoodLogo} alt="logo efood" />
-
         <S.HomeTitle>
           Viva experiências gastronômicas no conforto da sua casa
         </S.HomeTitle>
       </S.BackgroundHeaderHome>
-
       <div className="container">
-        <S.ListCard>
-          {foods &&
-            foods.map((food) => (
-              <Card
-                key={food.id}
-                avaliation={food.avaliacao}
-                description={getDescription(food.descricao)}
-                title={food.titulo}
-                infos={food.tipo}
-                image={food.capa}
-                id={food.id}
-              />
-            ))}
-        </S.ListCard>
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <S.ListCard>
+            {foods &&
+              foods.map((food) => (
+                <Card
+                  key={food.id}
+                  avaliation={food.avaliacao}
+                  description={getDescription(food.descricao)}
+                  title={food.titulo}
+                  infos={food.tipo}
+                  image={food.capa}
+                  id={food.id}
+                />
+              ))}
+          </S.ListCard>
+        )}
       </div>
     </>
   );
