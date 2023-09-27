@@ -1,16 +1,6 @@
 import * as S from "./styled";
 
-type Props = {
-  name: string;
-  onClick?: React.MouseEventHandler<Element>;
-  type?:
-    | (React.ButtonHTMLAttributes<HTMLButtonElement> & "button")
-    | "reset"
-    | "submit"
-    | undefined;
-};
-
-const Button = ({ name, onClick, type }: Props) => {
+const Button = ({ name, onClick, type }: ButtonProps) => {
   return (
     <S.ButtonStyles onClick={onClick} type={type}>
       {name}

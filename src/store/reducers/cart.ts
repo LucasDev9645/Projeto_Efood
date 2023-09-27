@@ -1,13 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { Menu } from "../../util/types";
-
-type CartState = {
-  items: Menu[];
-  isOpen: boolean;
-  isOrderOpen: boolean;
-};
-
 const initialState: CartState = {
   items: [],
   isOpen: false,

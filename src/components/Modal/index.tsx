@@ -1,7 +1,6 @@
 import { useDispatch } from "react-redux";
 
 import Button from "../Button";
-import { Menu } from "../../util/types";
 import { add, open } from "../../store/reducers/cart";
 import { formatPrice } from "../../util/ultilits";
 

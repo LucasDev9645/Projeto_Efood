@@ -12,8 +12,8 @@ import Cart from "../../assets/images/cart.svg";
 import * as S from "./style";
 
 const RestaurantHeader = () => {
-  const paramsId = useParams();
-  const { data: restaurant } = useGetRestaurantQuery(paramsId.id!);
+  const paramsId = useParams() as RestaurantParams;
+  const { data: restaurant } = useGetRestaurantQuery(paramsId.id);
 
   const dispatch = useDispatch();
   const { items } = useSelector((state: RootReducer) => state.cart);
@@ -33,9 +33,13 @@ const RestaurantHeader = () => {
           <img src={efoodLogo} alt="logo efood" />
           <div>
             <p>{items.length} - produto(s)</p>
-            <a title="Carrinho de produtos" onClick={() => dispatch(open())}>
+            <span
+              role="button"
+              title="Carrinho de produtos"
+              onClick={() => dispatch(open())}
+            >
               <img src={Cart} alt="imagem carrinho" />
-            </a>
+            </span>
           </div>
         </S.ProfileMenuContainer>
       </S.ImagePresentationHeader>

@@ -36,7 +36,8 @@ export const ProfileMenuContainer = styled.div`
   padding: 3.6rem;
   font-weight: 700;
 
-  a {
+  a,
+  span {
     color: ${colors.red};
     cursor: pointer;
   }

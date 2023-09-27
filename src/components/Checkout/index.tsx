@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import InputMask from "react-input-mask";
 
 import Button from "../Button";
 import { closeOrderOpen, open, clear } from "../../store/reducers/cart";
@@ -13,10 +14,11 @@ import { Overlay } from "../Cart/style";
 import * as S from "./style";
 
 const Checkout = () => {
-  const { isOrderOpen } = useSelector((state: RootReducer) => state.cart);
+  const { isOrderOpen, items } = useSelector(
+    (state: RootReducer) => state.cart
+  );
   const [continuePayment, setContinuePayment] = useState(false);
-  const [purchase, { isLoading, isError, data, isSuccess }] =
-    usePurchaseMutation();
+  const [purchase, { isLoading, data, isSuccess }] = usePurchaseMutation();
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -93,12 +95,10 @@ const Checkout = () => {
             },
           },
         },
-        products: [
-          {
-            id: 1,
-            price: 10,
-          },
-        ],
+        products: items.map((item) => ({
+          id: item.id,
+          price: item.preco as number,
+        })),
       });
     },
   });
@@ -132,7 +132,7 @@ const Checkout = () => {
 
   return (
     <>
-      {isSuccess ? (
+      {isSuccess && data ? (
         <S.MessageContainer>
           <Overlay />
           <S.CompletionMessage>
@@ -206,13 +206,14 @@ const Checkout = () => {
               <S.InputNumbers>
                 <div>
                   <label htmlFor="zipCode">Cep</label>
-                  <input
+                  <InputMask
                     id="zipCode"
-                    type="number"
+                    type="text"
                     name="zipCode"
                     value={form.values.zipCode}
                     onChange={form.handleChange}
                     onBlur={form.handleBlur}
+                    mask="99999-999"
                   />
                   <small>
                     {getErrorMessage("zipCode", form.errors.zipCode)}
@@ -271,13 +272,14 @@ const Checkout = () => {
                 >
                   <div>
                     <label htmlFor="cardNumber">Número do cartão</label>
-                    <input
+                    <InputMask
                       id="cardNumber"
                       type="text"
                       name="cardNumber"
                       value={form.values.cardNumber}
                       onChange={form.handleChange}
                       onBlur={form.handleBlur}
+                      mask="9999 9999 9999 9999"
                     />
                     <small>
                       {getErrorMessage("cardNumber", form.errors.cardNumber)}
@@ -285,13 +287,14 @@ const Checkout = () => {
                   </div>
                   <div>
                     <label htmlFor="cardCode">CVV</label>
-                    <input
+                    <InputMask
                       id="cardCode"
                       type="text"
                       name="cardCode"
                       value={form.values.cardCode}
                       onChange={form.handleChange}
                       onBlur={form.handleBlur}
+                      mask="999"
                     />
                     <small>
                       {getErrorMessage("cardCode", form.errors.cardCode)}
@@ -301,13 +304,14 @@ const Checkout = () => {
                 <S.InputNumbers>
                   <div>
                     <label htmlFor="expiresMonth">Mês de vencimento</label>
-                    <input
+                    <InputMask
                       id="expiresMonth"
                       type="text"
                       name="expiresMonth"
                       value={form.values.expiresMonth}
                       onChange={form.handleChange}
                       onBlur={form.handleBlur}
+                      mask="99"
                     />
                     <small>
                       {getErrorMessage(
@@ -318,13 +322,14 @@ const Checkout = () => {
                   </div>
                   <div>
                     <label htmlFor="expiresYear">Ano de vencimento</label>
-                    <input
+                    <InputMask
                       id="expiresYear"
                       type="text"
                       name="expiresYear"
                       value={form.values.expiresYear}
                       onChange={form.handleChange}
                       onBlur={form.handleBlur}
+                      mask="99"
                     />
                     <small>
                       {getErrorMessage("expiresYear", form.errors.expiresYear)}
@@ -332,7 +337,10 @@ const Checkout = () => {
                   </div>
                 </S.InputNumbers>
                 <S.ButtonsContainer>
-                  <Button name="Finalizar Pagamento" type="submit" />
+                  <Button
+                    name={isLoading ? "Finalizando..." : "Finalizar Pagamento"}
+                    type="submit"
+                  />
                   <Button
                     name="Voltar para a edição de endereço"
                     onClick={() => setContinuePayment(false)}

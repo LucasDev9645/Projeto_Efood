@@ -64,6 +64,13 @@ export const SideBar = styled.aside`
     width: 100%;
     height: 2rem;
   }
+
+  .cartNotice {
+    color: ${colors.blackAmber};
+    font-weight: 700;
+    font-size: 1.125rem;
+    text-align: center;
+  }
 `;
 
 export const ImageFood = styled.img`

@@ -4,15 +4,9 @@ import { useParams } from "react-router-dom";
 import ProfileCard from "./ProfileCard";
 import Modal from "../Modal";
 import Loader from "../Loader";
-import { Menu } from "../../util/types";
 import { useGetRestaurantQuery } from "../../services/api";
 
 import * as S from "./styles";
-
-type RestaurantParams = {
-  paramsId: string;
-  id: string;
-};
 
 const Profile = () => {
   const [openModal, setOpenModal] = useState(false);
