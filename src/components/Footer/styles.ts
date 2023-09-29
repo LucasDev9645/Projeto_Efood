@@ -7,8 +7,14 @@ export const StylesFooter = styled.footer`
   height: 18.75rem;
   text-align: center;
   font-weight: 700;
+  padding: 0.5rem;
 
   img {
     margin: 2.5rem 0.625rem;
+  }
+
+  @media (max-width: 760px) {
+    height: 20rem;
+    font-size: 0.8rem;
   }
 `;

@@ -16,6 +16,11 @@ export const HomeTitle = styled.h1`
   text-align: center;
   font-style: italic;
   margin: 10rem 0;
+
+  @media (max-width: 760px) {
+    font-size: 1.2rem;
+    margin: 5rem 0;
+  }
 `;
 
 export const ListCard = styled.section`
@@ -24,4 +29,9 @@ export const ListCard = styled.section`
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 2rem;
+  padding: 0.5rem;
+
+  @media (max-width: 1020px) {
+    justify-content: center;
+  }
 `;

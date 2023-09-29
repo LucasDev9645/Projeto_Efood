@@ -10,6 +10,12 @@ export const ModalCard = styled.div`
   color: ${colors.blackAmber};
   position: relative;
   z-index: 1;
+  margin: 0 0.5rem;
+
+  @media (max-width: 1020px) {
+    max-width: 45rem;
+    height: 19.5rem;
+  }
 `;
 
 export const ImgModal = styled.div`
@@ -18,6 +24,14 @@ export const ImgModal = styled.div`
     width: 20rem;
     height: 20.4rem;
     margin: 0.6rem;
+  }
+
+  @media (max-width: 1020px) {
+    img {
+      width: 17rem;
+      height: 17.4rem;
+      margin: 1rem 0.6rem;
+    }
   }
 `;
 
@@ -45,5 +59,16 @@ export const ModalCardDescription = styled.div`
     font-size: 1rem;
     margin-bottom: 3rem;
     padding-right: 0.5rem;
+  }
+
+  @media (max-width: 1020px) {
+    header {
+      h2 {
+        margin-top: 1rem;
+      }
+    }
+    p {
+      margin-bottom: 1.8rem;
+    }
   }
 `;

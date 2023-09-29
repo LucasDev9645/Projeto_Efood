@@ -8,6 +8,7 @@ export const ImagePresentationHeader = styled.div`
   background-size: cover;
   color: ${colors.white};
   position: relative;
+  padding: 0.5rem;
 
   h1 {
     position: absolute;
@@ -25,6 +26,17 @@ export const ImagePresentationHeader = styled.div`
     position: absolute;
     top: 2rem;
     font-weight: 400;
+  }
+
+  @media (max-width: 1020px) {
+    h1 {
+      font-size: 1.5rem;
+      bottom: 1.5rem;
+    }
+
+    h2 {
+      font-size: 1.2rem;
+    }
   }
 `;
 
@@ -49,5 +61,8 @@ export const ProfileMenuContainer = styled.div`
     p {
       margin-right: 0.5rem;
     }
+  }
+
+  @media (max-width: 760px) {
   }
 `;

@@ -12,6 +12,10 @@ export const HomeCardContainer = styled.div`
   ${TagContainer} {
     margin-right: 0.5rem;
   }
+
+  @media (max-width: 560px) {
+    height: 29rem;
+  }
 `;
 
 export const HomeCardImage = styled.img`

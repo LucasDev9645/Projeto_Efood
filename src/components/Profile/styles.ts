@@ -11,6 +11,24 @@ export const CardListContainer = styled.div`
     grid-template-columns: repeat(3, 1fr);
     gap: 3rem;
   }
+
+  @media (max-width: 1020px) {
+    ul {
+      display: grid;
+      margin: 3rem 0;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3rem;
+    }
+  }
+
+  @media (max-width: 760px) {
+    ul {
+      display: grid;
+      margin: 2rem 0;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
 `;
 
 export const ContainerModalCard = styled.div`
