@@ -71,6 +71,14 @@ export const SideBar = styled.aside`
     font-size: 1.125rem;
     text-align: center;
   }
+
+  @media (max-width: 700px) {
+    width: 20.5rem;
+
+    li {
+      width: 19.5rem;
+    }
+  }
 `;
 
 export const ImageFood = styled.img`

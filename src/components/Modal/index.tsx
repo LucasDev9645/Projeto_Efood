@@ -30,6 +30,7 @@ const Modal = ({ modalDate, setModalClose }: Props) => {
         <header>
           <h2>{modalDate?.nome}</h2>
           <img
+            className="closeImage"
             onClick={() => setModalClose(false)}
             src={Close}
             alt="fechar modal"

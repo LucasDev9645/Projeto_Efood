@@ -63,6 +63,8 @@ export const ProfileMenuContainer = styled.div`
     }
   }
 
-  @media (max-width: 760px) {
+  @media (max-width: 560px) {
+    padding: 3.6rem 0.2rem;
+    font-size: 0.8rem;
   }
 `;
