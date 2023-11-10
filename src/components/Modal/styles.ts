@@ -28,8 +28,9 @@ export const ModalCard = styled.div`
 export const ImgModal = styled.div`
   img {
     border-radius: 0.5rem;
-    width: 20rem;
-    height: 20.4rem;
+    object-fit: cover;
+    max-width: 20rem;
+    height: 20rem;
     margin: 0.6rem;
   }
 

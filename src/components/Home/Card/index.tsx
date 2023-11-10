@@ -13,14 +13,24 @@ type Props = {
   avaliation: number;
   description: string;
   infos: string;
+  emphasis: boolean;
 };
 
-const Card = ({ image, title, avaliation, description, infos, id }: Props) => {
+const Card = ({
+  image,
+  title,
+  avaliation,
+  description,
+  infos,
+  id,
+  emphasis,
+}: Props) => {
   return (
     <S.HomeCardContainer>
       <S.HomeCardImage src={image} alt={title} />
       <S.Infos>
         <Tag>{infos}</Tag>
+        {emphasis ? <Tag>Destaque da Semana</Tag> : ""}
       </S.Infos>
       <S.ContainerDescription>
         <S.TitleContainer>

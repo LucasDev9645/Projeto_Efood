@@ -34,6 +34,7 @@ const Home = () => {
                   description={getDescription(food.descricao)}
                   title={food.titulo}
                   infos={food.tipo}
+                  emphasis={food.destacado}
                   image={food.capa}
                   id={food.id}
                 />

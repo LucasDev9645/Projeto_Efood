@@ -12,6 +12,7 @@ import { usePurchaseMutation } from "../../services/api";
 
 import { Overlay } from "../Cart/style";
 import * as S from "./style";
+import { formatPrice } from "../../util/ultilits";
 
 const Checkout = () => {
   const { isOrderOpen, items } = useSelector(
@@ -128,6 +129,12 @@ const Checkout = () => {
     navigate("/");
     dispatch(closeOrderOpen());
     dispatch(clear());
+  };
+
+  const totalPrice = () => {
+    return items.reduce((acumulator, value) => {
+      return (acumulator += value.preco);
+    }, 0);
   };
 
   return (
@@ -252,7 +259,10 @@ const Checkout = () => {
           {continuePayment ? (
             <S.OrderConfirm>
               <S.FormBar>
-                <p>Pagamento - Valor a pagar R$ 134,00</p>
+                <p>
+                  Pagamento - Valor a pagar{" "}
+                  <span>{formatPrice(totalPrice())}</span>
+                </p>
                 <S.InputGroup>
                   <label htmlFor="cardOwner">Nome do cartão</label>
                   <input
