@@ -8,12 +8,7 @@ import Close from "../../assets/images/close.png";
 
 import * as S from "./styles";
 
-type Props = {
-  setModalClose: (state: boolean) => void;
-  modalDate?: Menu;
-};
-
-const Modal = ({ modalDate, setModalClose }: Props) => {
+const Modal = ({ modalDate, setModalClose }: ModalProps) => {
   const dispatch = useDispatch();
 
   const addToCart = () => {

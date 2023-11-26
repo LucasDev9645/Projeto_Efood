@@ -1,11 +1,11 @@
 import { useSelector, useDispatch } from "react-redux";
 
-import Button from "../Button";
+import { close, remove, orderOpen } from "../../store/reducers/cart";
 import { RootReducer } from "../../store";
 import { formatPrice } from "../../util/ultilits";
+import Button from "../Button";
 
 import bin from "../../assets/images/lixeira-de-reciclagem 1.png";
-import { close, remove, orderOpen } from "../../store/reducers/cart";
 
 import * as S from "./style";
 

@@ -5,14 +5,14 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import InputMask from "react-input-mask";
 
-import Button from "../Button";
 import { closeOrderOpen, open, clear } from "../../store/reducers/cart";
 import { RootReducer } from "../../store";
 import { usePurchaseMutation } from "../../services/api";
+import Button from "../Button";
+import { formatPrice } from "../../util/ultilits";
 
 import { Overlay } from "../Cart/style";
 import * as S from "./style";
-import { formatPrice } from "../../util/ultilits";
 
 const Checkout = () => {
   const { isOrderOpen, items } = useSelector(

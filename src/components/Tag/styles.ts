@@ -1,9 +1,8 @@
-import { Props } from ".";
-
 import styled from "styled-components";
+
 import { colors } from "../../styles/styles";
 
-export const TagContainer = styled.div<Props>`
+export const TagContainer = styled.div<TagProps>`
   background-color: ${colors.red};
   color: ${colors.white};
   font-size: ${(props) => (props.size === "big" ? "1rem" : "0.625rem")};

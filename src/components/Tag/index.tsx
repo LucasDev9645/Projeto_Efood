@@ -1,11 +1,6 @@
 import * as S from "./styles";
 
-export type Props = {
-  size?: "small" | "big";
-  children: string | boolean;
-};
-
-const Tag = ({ children, size = "small" }: Props) => {
+const Tag = ({ children, size = "small" }: TagProps) => {
   return <S.TagContainer size={size}>{children}</S.TagContainer>;
 };
 

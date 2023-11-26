@@ -4,6 +4,30 @@ import { CartContainer, SideBar } from "../Cart/style";
 import { colors } from "../../styles/styles";
 import { ButtonStyles } from "../Button/styled";
 
+export const MessageContainer = styled(CartContainer)`
+  display: flex;
+`;
+
+export const CompletionMessage = styled(SideBar)`
+  color: ${colors.amber};
+
+  p {
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+    padding-top: 1rem;
+  }
+`;
+
+export const ButtonsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.5rem;
+
+  ${ButtonStyles} {
+    margin-bottom: 0.8rem;
+  }
+`;
+
 export const OrderContainer = styled(CartContainer)`
   display: none;
 
@@ -90,34 +114,6 @@ export const InputNumbers = styled.div`
   }
 `;
 
-export const ButtonsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-top: 1.5rem;
-
-  ${ButtonStyles} {
-    margin-bottom: 0.8rem;
-  }
-`;
-
-export const OrderConfirm = styled(CartContainer)`
-  display: flex;
-`;
-
-export const MessageContainer = styled(CartContainer)`
-  display: flex;
-`;
-
-export const CompletionMessage = styled(SideBar)`
-  color: ${colors.amber};
-
-  p {
-    font-size: 0.875rem;
-    line-height: 1.375rem;
-    padding-top: 1rem;
-  }
-`;
-
 export const ButtonPaymentContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -144,4 +140,8 @@ export const ButtonPaymentContainer = styled.div`
       text-decoration: underline;
     }
   }
+`;
+
+export const OrderConfirm = styled(CartContainer)`
+  display: flex;
 `;

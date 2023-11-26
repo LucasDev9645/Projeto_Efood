@@ -18,6 +18,33 @@ declare type Restaurants = {
   cardapio: Menu[];
 };
 
+declare type CardProps = {
+  id?: number;
+  image: string;
+  title: string;
+  avaliation: number;
+  description: string;
+  infos: string;
+  emphasis: boolean;
+};
+
+declare type ModalProps = {
+  setModalClose: (state: boolean) => void;
+  modalDate?: Menu;
+};
+
+declare type Props = {
+  setModalOpen: (state: boolean) => void;
+  foto: string;
+  nome: string;
+  descricao: string;
+};
+
+declare type TagProps = {
+  size?: "small" | "big";
+  children: string | boolean;
+};
+
 declare type Product = {
   id: number;
   price: number;

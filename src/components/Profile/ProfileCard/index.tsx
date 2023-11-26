@@ -2,13 +2,6 @@ import Button from "../../Button";
 
 import * as S from "./styles";
 
-export type Props = {
-  setModalOpen: (state: boolean) => void;
-  foto: string;
-  nome: string;
-  descricao: string;
-};
-
 const ProfileCard = ({ setModalOpen, foto, nome, descricao }: Props) => {
   const getDescription = (description: string) => {
     if (description.length > 100) {

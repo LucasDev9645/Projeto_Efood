@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import { colors } from "../../../styles/styles";
 import { TagContainer } from "../../Tag/styles";
 
@@ -22,6 +23,13 @@ export const HomeCardImage = styled.img`
   border-radius: 0.5rem 0.5rem 0 0;
   width: 100%;
   height: 13.5rem;
+`;
+
+export const Infos = styled.div`
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
 `;
 
 export const ContainerDescription = styled.div`
@@ -61,11 +69,4 @@ export const HomeCardDescription = styled.p`
   margin-bottom: 1rem;
   line-height: 1.5rem;
   font-style: italic;
-`;
-
-export const Infos = styled.div`
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  display: flex;
 `;

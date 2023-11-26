@@ -6,16 +6,6 @@ import Star from "../../../assets/images/estrela.svg";
 
 import * as S from "./styles";
 
-type Props = {
-  id?: number;
-  image: string;
-  title: string;
-  avaliation: number;
-  description: string;
-  infos: string;
-  emphasis: boolean;
-};
-
 const Card = ({
   image,
   title,
@@ -24,7 +14,7 @@ const Card = ({
   infos,
   id,
   emphasis,
-}: Props) => {
+}: CardProps) => {
   return (
     <S.HomeCardContainer>
       <S.HomeCardImage src={image} alt={title} />

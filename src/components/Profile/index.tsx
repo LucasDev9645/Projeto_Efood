@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 
+import { useGetRestaurantQuery } from "../../services/api";
 import ProfileCard from "./ProfileCard";
 import Modal from "../Modal";
 import Loader from "../Loader";
-import { useGetRestaurantQuery } from "../../services/api";
 
 import * as S from "./styles";
 
