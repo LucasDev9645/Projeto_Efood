@@ -6,7 +6,9 @@
 
 https://projeto-efood.vercel.app/
 
-O Efood é um e-commerce de comida inovador, desenvolvido com tecnologias de ponta como React, React Router, Redux, TypeScript e Styled Components. 
+O Efood redefine a experiência de pedidos online, oferecendo um e-commerce de comida inovador. Nossa plataforma apresenta uma extensa variedade de restaurantes, abrangendo todos os tipos de culinárias.
+
+Desenvolvido com tecnologias de ponta como React, React Router, Redux, TypeScript e Styled Components. 
 
 A aplicação oferece uma experiência de compra online fluida e intuitiva, destacando-se pela arquitetura robusta, gestão eficiente do estado com Redux, e estilização avançada com Styled Components. 
 
